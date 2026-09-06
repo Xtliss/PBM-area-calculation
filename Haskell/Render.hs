@@ -30,10 +30,12 @@ reducirBloques k xs resumen
 promedio :: [Int] -> Int
 promedio xs = sum xs `div` length xs
 
--- | Los caracteres de bloque Unicode, de "vacio" a "lleno", usados
--- para dar sensacion de gradiente en las visualizaciones.
+-- | Los caracteres de gradiente (de "vacio" a "lleno") usados para dar
+-- sensacion de variacion en las visualizaciones. Se usa ASCII plano
+-- (en vez de bloques Unicode) para que funcione en cualquier terminal
+-- sin depender de su configuracion de encoding.
 caracteresBloque :: String
-caracteresBloque = " ▁▂▃▄▅▆▇█"
+caracteresBloque = " .:-=+*#%@"
 
 -- | Dado el nivel (0..maximo) de una columna y el numero de niveles
 -- posibles, escoge el caracter de bloque correspondiente.
@@ -52,7 +54,7 @@ dibujarSilueta :: [Int] -> Int -> String
 dibujarSilueta alturasReducidas filasConsola =
   let maxAltura = maximum (1 : alturasReducidas)
       normalizadas = [ altura * filasConsola `div` maxAltura | altura <- alturasReducidas ]
-      fila y = [ if h >= (filasConsola - y) then '█' else ' ' | h <- normalizadas ]
+      fila y = [ if h >= (filasConsola - y) then '#' else ' ' | h <- normalizadas ]
   in unlines [ fila y | y <- [0 .. filasConsola - 1] ]
 
 -- | Dibuja M[x] (ya reducida) como una sola linea de bloques Unicode

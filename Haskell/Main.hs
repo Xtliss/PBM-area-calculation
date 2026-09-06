@@ -9,12 +9,12 @@ import PBM (Imagen(..), cargarPBM)
 import Curve (alturas, area, muestras)
 import Render (reducirBloques, promedio, dibujarSilueta, dibujarBarrasAltura)
 import Text.Printf (printf)
-import System.IO (hSetEncoding, stdout, utf8)
 
--- | Nombre del archivo de entrada. Se asume que el ejecutable corre
--- desde una ubicacion donde este archivo es accesible (ver README).
+-- | Nombre del archivo de entrada. Vive en la raiz del repositorio,
+-- un nivel arriba de esta carpeta (Haskell/), tal como en la
+-- estructura de entrega: README.md, Haskell/, Prolog/, curva_binaria_P4.pbm
 archivoPBM :: FilePath
-archivoPBM = "curva_binaria_P4.pbm"
+archivoPBM = "../curva_binaria_P4.pbm"
 
 -- | Ancho objetivo (en caracteres) de la visualizacion en consola.
 anchoConsola :: Int
@@ -26,7 +26,6 @@ altoSilueta = 20
 
 main :: IO ()
 main = do
-  hSetEncoding stdout utf8
   img <- cargarPBM archivoPBM
 
   let m           = alturas img               -- M = map f [0..ancho-1]
