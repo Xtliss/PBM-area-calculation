@@ -1,3 +1,9 @@
+## Integrantes: Carlos Enrique Torres Rodriguez y Santiago Rodriguez Quiceno 
+
+Clase: Lunes de 9am a 12pm | 0260
+
+
+
 ## Resultados y Validación
 
 Se procesó la imagen PBM binaria `curva_binaria_P4.pbm` de dimensión **567 × 319 píxeles** en ambas implementaciones.
